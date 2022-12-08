@@ -3,6 +3,7 @@
 #include <string>
 #include <functional>
 #include <vector>
+#include <optional>
 
 namespace util {
 
@@ -22,4 +23,9 @@ void for_each_line(std::string file_name, const std::function<void(const std::st
  *  @param f the function to call every n lines
  */
 void for_n_lines(std::string file_name, size_t n, const std::function<void(const std::vector<std::string>&)>& f);
+
+/**
+ *  get a vector of all lines in a file
+ */
+std::optional<std::vector<std::string>> get_all_lines(const std::string& file_name);
 }

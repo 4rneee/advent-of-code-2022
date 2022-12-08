@@ -5,6 +5,7 @@
 #include <functional>
 #include <fstream>
 #include <iostream>
+#include <optional>
 #include "util.h"
 
 namespace util {
@@ -38,4 +39,18 @@ void for_n_lines(std::string file_name, size_t n, const std::function<void(const
         std::cout << "Unable to open file\n";
 }
 
+std::optional<std::vector<std::string>> get_all_lines(const std::string& file_name) {
+    std::ifstream file(file_name);
+    if (file.is_open()) {
+        std::string line;
+        std::vector<std::string> lines;
+        while (std::getline(file, line))
+            lines.push_back(line);
+
+        file.close();
+        return lines;
+    } else
+        std::cout << "Unable to open file\n";
+    return {};
+}
 }
