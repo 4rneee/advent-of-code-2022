@@ -34,6 +34,7 @@ void for_n_lines(std::string file_name, size_t n, const std::function<void(const
                 lines.clear();
             }
         }
+        f(lines);
         file.close();
     } else
         std::cout << "Unable to open file\n";
